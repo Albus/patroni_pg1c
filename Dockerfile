@@ -23,6 +23,7 @@ RUN pip3 install patroni[etcd3] wal-e
 
 USER postgres
 VOLUME /var/lib/postgresql
+RUN ssh-import-id gh:albus
 
 USER root
 
