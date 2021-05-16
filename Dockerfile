@@ -10,6 +10,7 @@ RUN apt-ftparchive packages . > Packages
 RUN echo deb [trusted=yes] file:///opt/debs/ ./ > /etc/apt/sources.list.d/local.list
 RUN apt -q update --allow-unauthenticated
 RUN install_clean --install-recommends postgresql-12=*-1.1C postgresql-server-dev-12=*-1.1C
+RUN apt-mark hold `find . -iname "/opt/debs/*.deb" -exec dpkg-deb --field {} package \; | xargs`
 WORKDIR /root
 
 RUN pip3 config --global set global.disable-pip-version-check true \
