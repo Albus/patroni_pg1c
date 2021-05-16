@@ -14,7 +14,7 @@ RUN apt update --allow-unauthenticated
 RUN install_clean --install-recommends postgresql-12=*-1.1C postgresql-server-dev-12=*-1.1C
 RUN apt-mark hold `find /opt/debs -iname "*.deb" -exec dpkg-deb --field {} package \; | xargs` || true
 RUN usermod -u 1100 postgres & groupmod -g 1100 postgres \
-  & chown 1100:1100 -R /var/lib/postgresql /var/run/postgresql /etc/postgresql \
+  & chown 1100:1100 -hR /var/lib/postgresql /var/run/postgresql /etc/postgresql \
   & find / -group 109 -exec chgrp -h 1100 {} \; 2>/dev/null || true \
   & find / -user 106 -exec chown -h 1100 {} \; 2>/dev/null || true
 RUN pip3 config --global set global.disable-pip-version-check true \
