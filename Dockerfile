@@ -1,7 +1,7 @@
 FROM albus/baseimage:latest
 COPY ./debs/*.deb /opt/debs/
 
-RUN install_clean postgresql-common python3-pip python3-dev sysstat dpkg-dev python3-psycopg2 mc mosh
+RUN install_clean postgresql-common python3-pip python3-dev sysstat dpkg-dev python3-psycopg2 mc mosh fish htop
 RUN pg_conftool -v /etc/postgresql-common/createcluster.conf set create_main_cluster false
 
 WORKDIR /opt/debs
