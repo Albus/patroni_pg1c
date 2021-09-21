@@ -1,4 +1,4 @@
-FROM albus/baseimage:latest
+FROM albus/baseimage:master
 COPY ./debs/*.deb /opt/debs/
 
 RUN install_clean postgresql-common python3-pip python3-dev sysstat dpkg-dev python3-psycopg2 mc mosh fish htop
